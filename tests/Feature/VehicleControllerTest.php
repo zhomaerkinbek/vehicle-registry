@@ -80,7 +80,7 @@ class VehicleControllerTest extends TestCase
     }
     public function testShowStats()
     {
-        // Создаем автомобили
+        
         Vehicle::create([
             'vehicle_number' => 'AUTO-111111',
             'brand' => 'Toyota',
@@ -97,10 +97,10 @@ class VehicleControllerTest extends TestCase
             'model' => 'Civic',
         ]);
 
-        // Запрос на страницу статистики
+        
         $response = $this->get('/stats');
 
-        // Проверка, что выводятся данные
+        
         $response->assertStatus(200);
         $response->assertSee('Toyota');
         $response->assertSee('Corolla');
@@ -109,7 +109,7 @@ class VehicleControllerTest extends TestCase
     }
     public function testShowHistory()
     {
-        // Создаем автомобиль и историю владельцев
+        
         $vehicle = Vehicle::create([
             'vehicle_number' => 'AUTO-123456',
             'brand' => 'BMW',
@@ -128,10 +128,10 @@ class VehicleControllerTest extends TestCase
             'transferred_at' => null,
         ]);
 
-        // Запрос на историю
+        
         $response = $this->get('/history?vehicle_number=' . $vehicle->vehicle_number);
 
-        // Проверка, что выводятся данные истории
+        
         $response->assertStatus(200);
         $response->assertSee('Смирнов Сергей');
         $response->assertSee('Кузнецов Дмитрий');

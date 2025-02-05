@@ -17,8 +17,8 @@ class CreateOwnerHistoriesTable extends Migration
             $table->id();
             $table->string('vehicle_number');
             $table->string('owner_name');
-            $table->timestamp('registered_at')->default(DB::raw('CURRENT_TIMESTAMP')); // Дата регистрации
-            $table->timestamp('transferred_at')->nullable(); // Дата переоформления
+            $table->timestamp('registered_at')->default(DB::raw('CURRENT_TIMESTAMP')); 
+            $table->timestamp('transferred_at')->nullable(); 
         });
     }
 

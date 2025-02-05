@@ -41,12 +41,10 @@ public function reRegister(Request $request)
         'new_owner_name' => 'required|string|max:255',
     ]);
 
-    // Обновляем старую запись, устанавливая дату передачи
     OwnerHistory::where('vehicle_number', $request->vehicle_number)
         ->whereNull('transferred_at')
         ->update(['transferred_at' => now()]);
 
-    // Добавляем нового владельца
     OwnerHistory::create([
         'vehicle_number' => $request->vehicle_number,
         'owner_name' => $request->new_owner_name,
